@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans      
+                        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd      
+                        http://www.springframework.org/schema/context      
+                        http://www.springframework.org/schema/context/spring-context-4.2.xsd
+                        http://www.springframework.org/schema/util 
+                        http://www.springframework.org/schema/util/spring-util-4.3.xsd 
+                        http://www.springframework.org/schema/aop 
+                        http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+                        http://www.springframework.org/schema/tx      
+                        http://www.springframework.org/schema/tx/spring-tx-4.3.xsd 
+                        http://www.springframework.org/schema/mvc      
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
+   <!-- 自动扫描 -->
+	<context:component-scan base-package="com.king.dao.risk" />
+    <!-- 加载属性配置 -->
+	<bean id="riskPropConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="ignoreUnresolvablePlaceholders" value="true"/>
+		<property name="order" value="3" />
+		<property name="locations">
+			<list>
+				<value>classpath*:config/api-risk.properties</value>
+			</list>
+		</property>
+	</bean>   
+     <context:property-placeholder location="classpath*:config/api-risk.properties" />   
+	
+	
+    <!-- 配置jta数据源 -->
+    <bean name="riskDataSource" class="com.atomikos.jdbc.AtomikosDataSourceBean"  init-method="init" destroy-method="close">  
+       <property name="uniqueResourceName">     
+           <value>${risk.dbname}</value>     
+       </property>     
+       <property name="xaDataSourceClassName">     
+           <value>${risk.xaDataSourceClassName}</value>     
+       </property>  
+       <property name="xaProperties">     
+           <props>     
+               <prop key="URL">${risk.url}</prop>     
+               <prop key="user">${risk.username}</prop>     
+               <prop key="password">${risk.password}</prop>     
+           </props>     
+       </property>     
+      <property name="poolSize"><value>10</value></property>       
+      <property name="maxPoolSize"><value>30</value></property>
+      <property name="testQuery"><value>select 1 from dual</value></property>
+    </bean>
+
+	<!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
+	<bean id="riskSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="riskDataSource" />
+		<property name="configLocation" value="classpath:mybatis-config.xml" />
+		<property name="mapperLocations">
+			<list>
+				<value>classpath*:com/king/dao/risk/mapper/**/*.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+
+	<!-- 配置dao层公用类 -->
+	<bean id="riskSqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="riskSqlSessionFactory" />
+	</bean>
+ 
+	
+</beans>    

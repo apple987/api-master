@@ -1,0 +1,39 @@
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:task="http://www.springframework.org/schema/task"  
+    xmlns:context="http://www.springframework.org/schema/context"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans   
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd    
+    http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.3.xsd    
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd    
+    http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd">  
+   
+    <!-- 定时器开关-->  
+    <!-- <task:annotation-driven />  -->
+   
+    <!-- 本处基于注解的方式来配置定时器任务,有两种方式实现定时器配置 -->
+    <!-- 第一种配置方式：调用myTaskXml来实现,show每隔5秒执行一次，print每隔十秒执行一次 -->
+    <!-- <bean id="myTaskXml" class="com.rainsoft.mvc.task.MyTaskXml"></bean>  
+    <task:scheduled-tasks>  
+         <task:scheduled ref="myTaskXml" method="show" cron="10 * * * * ?" />  
+         <task:scheduled ref="myTaskXml" method="print" cron="* */10 * * * ?"/>  
+    </task:scheduled-tasks> -->  
+    <!-- 第二种配置方式：自动扫描某个包下的路径里面的定时任务,然后执行,执行方式在具体的注解定时器类中配置 -->   
+    <!-- 自动扫描的包名 -->    
+    <!-- <context:component-scan base-package="com.rainsoft.mvc.task" />   -->
+    
+    <!-- 线程池的配置 -->
+	<bean id="taskExecutor"
+		class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<!-- 核心线程数 -->
+		<property name="corePoolSize" value="5" />
+		<!-- 最大线程数 -->
+		<property name="maxPoolSize" value="1000" />
+		<!-- 队列最大长度 -->
+		<property name="queueCapacity" value="200" />
+		<!-- 线程池维护线程所允许的空闲时间，默认为60s -->
+		<property name="keepAliveSeconds" value="300" />
+	</bean>
+</beans>  

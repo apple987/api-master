@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans      
+                        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd      
+                        http://www.springframework.org/schema/context      
+                        http://www.springframework.org/schema/context/spring-context-4.3.xsd
+                        http://www.springframework.org/schema/util 
+                        http://www.springframework.org/schema/util/spring-util-4.3.xsd 
+                        http://www.springframework.org/schema/aop 
+                        http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+                        http://www.springframework.org/schema/tx      
+                        http://www.springframework.org/schema/tx/spring-tx-4.3.xsd 
+                        http://www.springframework.org/schema/mvc      
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
+                        
+	<!-- 自动扫描 -->
+	<context:component-scan base-package="com.king.service" />
+	
+	<!-- jta事务管理 -->
+	<bean id="atomikosTransactionManager" class="com.atomikos.icatch.jta.UserTransactionManager"  
+	        init-method="init" destroy-method="close">  
+	        <property name="forceShutdown">  
+	            <value>true</value>  
+	        </property>  
+	</bean> 
+	
+	    
+	<bean id="atomikosUserTransaction" class="com.atomikos.icatch.jta.UserTransactionImp">  
+	        <property name="transactionTimeout" value="300" />  
+	</bean>   
+	
+	<!-- spring 事务管理器 -->
+   <bean id="springTransactionManager"  
+	        class="org.springframework.transaction.jta.JtaTransactionManager">  
+	        <property name="transactionManager">  
+	            <ref bean="atomikosTransactionManager" />  
+	        </property>  
+	        <property name="userTransaction">  
+	            <ref bean="atomikosUserTransaction" />  
+	        </property>  
+   </bean>  
+	
+	<!-- AOP配置事物 -->
+	<tx:advice id="transactionAdvice" transaction-manager="springTransactionManager">
+		<tx:attributes>
+			<tx:method name="select*" read-only="true" propagation="NOT_SUPPORTED" />
+			<tx:method name="query*" read-only="true" propagation="NOT_SUPPORTED" />
+			<tx:method name="delete*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+			<tx:method name="update*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+			<tx:method name="insert*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+			<tx:method name="save*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+			<tx:method name="*" read-only="true"/>
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- 配置AOP切面 -->
+	<aop:config>
+		<aop:pointcut id="transactionPointcut"
+			expression="execution(* com.king.*.service.*.*(..))" />
+		<aop:advisor pointcut-ref="transactionPointcut"
+			advice-ref="transactionAdvice" />
+	</aop:config>
+	
+    <!-- 注解配置事务 -->
+	<tx:annotation-driven transaction-manager="springTransactionManager" />
+	
+</beans>    
