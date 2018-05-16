@@ -16,24 +16,17 @@
 api-master<br>
 ├─doc  (isec,wepull)项目SQL语句<br>
 │<br>
-│
 ├─api-web：web服务端,带有简单的页面显示<br>
-│ 
 │ <br>
 ├─api-facade：采用dubbo通讯服务,耦合api-web和api-provider模块<br>
 │ <br>
-│ 
 ├─api-facade：采用dubbo通讯服务,耦合api-web和api-provider模块<br>
-│
 │ <br>
 ├─api-back：连接isec数据库的dao层<br>
-│
 │ <br>
 ├─api-risk：连接wepull数据库的dao层<br>
-│
 │ <br>
 ├─api-service：事务控制，耦合在api-provider模块中,分布式事务，采用atomikos方式<br>
-│
 │ <br>
 ├─api-util：基础工具类，其他模块依赖此模块<br>
 
@@ -50,8 +43,9 @@ api-master<br>
 - &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color=blue>profile:test/pro/dev(三选一，必填)</font><br>
 - &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color=blue>勾选 update snapshots和skip tests</font><br>
 - &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color=blue>执行run之后,拷贝target目录下mvc.war</font><br>
-- 5.配置tomcat,加入mvc.war，启动tomcat<br>
-- 6.访问http://localhost:ip:port/api-web/swagger-ui.html<br>
+- 5.配置tomcat1,加入api-provider.war，启动tomcat1<br>
+- 6.配置tomcat2,加入api-web.war，启动tomcat2<br>
+- 7.访问http://localhost:ip:port/api-web/swagger-ui.html<br>
 <br>     
  **用户反馈：**<br>
 - Git仓库： https://github.com/apple987/api-master<br>
