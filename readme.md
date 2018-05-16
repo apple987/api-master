@@ -23,7 +23,7 @@ api-master<br>
 ├─api-facade：采用dubbo通讯服务,耦合api-web和api-provider模块<br>
 │ <br>
 ├─api-back：连接isec数据库的dao层<br>
-│ <br>
+│<br>
 ├─api-risk：连接wepull数据库的dao层<br>
 │ <br>
 ├─api-service：事务控制，耦合在api-provider模块中,分布式事务，采用atomikos方式<br>
