@@ -38,14 +38,14 @@ api-master<br>
  **启动说明:**<br>
 - 1.运行doc目录里面的sql文件，创建对应数据库isec,wepull<br>
 - 2.启动redis6386单机,(密码:qdone)<br>
-- 4.eclipse工具下，选中api-master节点，运行maven build:<br>
+- 3.eclipse工具下，选中api-master节点，运行maven build:<br>
 - &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color=blue>goals:clean install</font><br>
 - &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color=blue>profile:test/pro/dev(三选一，必填)</font><br>
 - &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color=blue>勾选 update snapshots和skip tests</font><br>
 - &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color=blue>执行run之后,拷贝target目录下mvc.war</font><br>
-- 5.配置tomcat1,加入api-provider.war，启动tomcat1<br>
-- 6.配置tomcat2,加入api-web.war，启动tomcat2<br>
-- 7.访问http://localhost:ip:port/api-web/swagger-ui.html<br>
+- 4.配置tomcat1,加入api-provider.war，启动tomcat1<br>
+- 5.配置tomcat2,加入api-web.war，启动tomcat2<br>
+- 6.访问http://localhost:ip:port/api-web/swagger-ui.html<br>
 <br>     
  **用户反馈：**<br>
 - Git仓库： https://github.com/apple987/api-master<br>
