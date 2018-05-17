@@ -4,14 +4,14 @@
 **项目说明**<br>  
 - 项目基于maven的多profile环境配置，打包时需要选择(test/pro/dev)打包运行的环境。<br>
 <br>
-##**项目特点**<br>  
+**项目特点**<br>  
 - 友好的代码结构及注释，便于阅读及二次开发 。<br>
 - 前端页面采用jsp+freemaker，多视图解析处理，优先jsp。<br>
 - 采用bootstrap-table强大灵活的表格插件渲染数据。 <br> 
 - 后端配置swagger在线文档，方便编写API接口文档。<br> 
 - 引入fastjson,redis配置。<br>
  <br> 
-##**项目结构**
+**项目结构**
 <br>
 api-master<br>
 ├─doc  (isec,wepull)项目SQL语句<br>
@@ -29,7 +29,7 @@ api-master<br>
 ├─api-service：事务控制,分布式事务，采用atomikos方式<br>
 │ <br>
 ├─api-util：基础工具类，其他模块依赖此模块<br>
-
+<br>
  **环境配置:**<br>
 - 1.项目依赖zookeeper,redis工具。<br>
 - 2.doc目录里面有初始化sql，运行项目前，请先创建mysql。<br>
