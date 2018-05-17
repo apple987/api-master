@@ -1,6 +1,7 @@
-﻿api-master是springMVC项目，基于maven多模块依赖，采用dubbo远程调用，目前spring升级到4.3.13版本,欢迎大家提出意见,您的宝贵意见，是我们进步的动力。
- <br> 
- <br> 
+﻿# api-master
+
+#### 项目介绍
+api-master是springMVC项目，基于maven多模块依赖，采用dubbo远程调用，目前spring升级到4.3.13版本,欢迎大家提出意见,您的宝贵意见，是我们进步的动力。<br>  
 **项目说明**<br>  
 - 项目基于maven的多profile环境配置，打包时需要选择(test/pro/dev)打包运行的环境。<br>
 <br>
