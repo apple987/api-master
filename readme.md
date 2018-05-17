@@ -47,9 +47,6 @@ api-master<br>
 - 5.配置tomcat2,加入api-web.war，启动tomcat2<br>
 - 6.访问http://localhost:ip:port/api-web/swagger-ui.html<br>
 <br>     
-## 效果图
-![输入图片说明](https://git.oschina.net/uploads/images/2017/0604/194616_36ed7fd6_551203.png "在这里输入图片标题")
-![](http://www.ityouknow.com/assets/images/keeppuresmile.jpg)	
  **用户反馈：**<br>
 - Git仓库： https://github.com/apple987/api-master<br>
 - 邮箱地址: m15171479289@163.com <br>
