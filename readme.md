@@ -1,4 +1,4 @@
-﻿项目api-master的pom.xml是springMVC项目，基于maven多模块依赖，采用dubbo远程调用，目前升级到4.3.13版本,您的宝贵意见，是我们进步的动力。
+﻿api-master是springMVC项目，基于maven多模块依赖，采用dubbo远程调用，目前spring升级到4.3.13版本,欢迎大家提出意见,您的宝贵意见，是我们进步的动力。
  <br> 
  <br> 
 **项目说明**<br>  
