@@ -2,17 +2,17 @@
 
 #### 项目介绍
 api-master是springMVC项目，基于maven多模块依赖，采用dubbo远程调用，目前spring升级到4.3.13版本,欢迎大家提出意见,您的宝贵意见，是我们进步的动力。<br>  
-**项目说明**<br>  
+#### **项目说明**<br>  
 - 项目基于maven的多profile环境配置，打包时需要选择(test/pro/dev)打包运行的环境。<br>
 <br>
-**项目特点**<br>  
+#### **项目特点**<br>  
 - 友好的代码结构及注释，便于阅读及二次开发 。<br>
 - 前端页面采用jsp+freemaker，多视图解析处理，优先jsp。<br>
 - 采用bootstrap-table强大灵活的表格插件渲染数据。 <br> 
 - 后端配置swagger在线文档，方便编写API接口文档。<br> 
 - 引入fastjson,redis配置。<br>
  <br> 
-**项目结构**
+#### **项目结构**
 <br>
 api-master<br>
 ├─doc  (isec,wepull)项目SQL语句<br>
@@ -31,12 +31,12 @@ api-master<br>
 │ <br>
 ├─api-util：基础工具类，其他模块依赖此模块<br>
 <br>
- **环境配置:**<br>
+####  **环境配置:**<br>
 - 1.项目依赖zookeeper,redis工具。<br>
 - 2.doc目录里面有初始化sql，运行项目前，请先创建mysql。<br>
 - 3.工具地址:https://pan.baidu.com/s/1Bm7udGJc40xEENFgnJjsIw <br>
 <br>
- **启动说明:**<br>
+####  **启动说明:**<br>
 - 1.运行doc目录里面的sql文件，创建对应数据库isec,wepull<br>
 - 2.启动redis6386单机,(密码:qdone)<br>
 - 3.eclipse工具下，选中api-master节点，运行maven build:<br>
@@ -48,7 +48,7 @@ api-master<br>
 - 5.配置tomcat2,加入api-web.war，启动tomcat2<br>
 - 6.访问http://localhost:ip:port/api-web/swagger-ui.html<br>
 <br>     
- **用户反馈：**<br>
+####  **用户反馈：**<br>
 - Git仓库： https://github.com/apple987/api-master<br>
 - 邮箱地址: m15171479289@163.com <br>
 		
