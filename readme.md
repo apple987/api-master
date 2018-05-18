@@ -34,7 +34,7 @@ api-master<br>
 - 3.工具地址:https://pan.baidu.com/s/1Bm7udGJc40xEENFgnJjsIw <br>
 <br>
  **启动说明:**<br>
-- 1.运行doc目录里面的sql文件，创建对应数据库isec,wepull<br>
+- 1.创建mysql数据库isec和wepull实例，运行doc目录里面的sql文件。<br>
 - 2.启动redis6386单机,(密码:qdone)<br>
 - 3.eclipse工具下，选中api-master节点，运行maven build:<br>
 - &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color=blue>goals:clean install</font><br>
